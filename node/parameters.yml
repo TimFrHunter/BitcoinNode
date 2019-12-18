@@ -1,0 +1,37 @@
+node :
+    host_remote : #distant ip to reach can be find on  https://bitnodes.earn.com/  try to fin one with protocol 70015 not lower  
+    port_remote :  8333 #18444
+    host_local :  '192.168.1.96' #Your private ip
+    port_local : 8333 #50000
+
+bitcoin : 
+    header :
+        network : 'main' #'testnet'
+    payload :   
+        version :
+            protocol : 70015
+            services : 'node_network'
+            nonce : '3b2eb35d8ce64444' # random sur 8Bytes
+            user_agent : '102f5361746f7368693a302e31382e312f' # '/Satoshi:0.18.1/'
+            start_height : '212672' # dernier block dont on dispose
+            relay : '01' # on est un relay pour les blocks
+        verack : null # vide c'est normal
+        getdata :
+            nb_block_hash : "01"
+            request_type : "block" # block request
+            hash : "00000000000000000011b3ad40dfd8ec8fe56075968714f4fffcc9c4c3837774" #"0f9188f13cb7b2c71f2a335e3a4fc328bf5beb436012afca590b1a11466e2206" 
+
+
+
+            
+
+# gr0kchain:~ $ docker volume create --name=bitcoind-data
+# gr0kchain:~ $ docker run -v bitcoind-data:/bitcoin --name=bitcoind-node -d \
+#     -p 18444:18444 \
+#     -p 127.0.0.1:18332:18332 \
+#     bitcoindevelopernetwork/bitcoind-regtest
+#
+#
+#     docker container restart dff1e54d86fc7a0afdd558aa5ebe0f681e95d01ccffa5ae0b6b12474596b109b
+#     docker container kill dff1e54d86fc7a0afdd558aa5ebe0f681e95d01ccffa5ae0b6b12474596b109b
+            
